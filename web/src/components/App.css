@@ -1,0 +1,10 @@
+.ant-layout-header,
+.ant-layout-footer {
+    background: #fff;
+    color: #000;
+    text-align: center;
+}
+
+.ant-layout-content {
+    padding: 15px;
+}
