@@ -2,31 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public function signup(Request $request)
     {
-        $user = User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
-            'password' => $request->password,
-        ]);
+        if (!User::where('email', $request->email)->exists()) {
+            $user = User::create([
+                'name'     => $request->name,
+                'email'    => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-        $token = auth()->login($user);
+            auth()->login($user);
+            $token = $user->createToken('twitter-app-token')->plainTextToken;
 
-        return $this->respondWithToken($token);
+            return $this->respondWithToken($token);
+        } else {
+            return response()->json(['error' => 'User with email  ' . $request->email . ' already exist.'], 401);
+        }
     }
 
-    public function login()
+    public function login(Request $request)
     {
-        $credentials = request(['email', 'password']);
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response([
+                'message' => ['Unauthorized']
+            ], 401);
         }
+
+        $token = $user->createToken('twitter-app-token')->plainTextToken;
 
         return $this->respondWithToken($token);
     }
@@ -35,7 +51,7 @@ class AuthController extends Controller
     {
         auth()->logout();
 
-        return response()->json(['message' => 'Successfully logged out'], 200);
+        return response()->json(['message' => 'Successfully logged out'], 201);
     }
 
     protected function respondWithToken($token)
@@ -43,14 +59,14 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type'   => 'bearer',
-            'expires_in'   => auth()->factory()->getTTL() * 60
-        ]);
+//            'expires_in'  => auth('api')->factory()->getTTL() * 60
+        ], 201 );
     }
 
     public function getAuthenticatedUser(Request $request)
     {
         $user = $request->user();
-        if (! $user ) {
+        if (!$user ) {
             return response()->json(['error' => 'User not found'], 401);
         }
         return response()->json($user, 200);

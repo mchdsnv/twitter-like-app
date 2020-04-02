@@ -1,9 +1,9 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
-
+use App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,26 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resources(['posts' => PostController::class]);
 
-Route::post('auth/login', function (Request $request) {
-    $data = $request->validate([
-        'email' => 'required|email',
-        'password' => 'required'
-    ]);
-
-    $user = User::where('email', $request->email)->first();
-
-    if (!$user || !Hash::check($request->password, $user->password)) {
-        return response([
-            'message' => ['The credentials you supplied were not correct, please try again.']
-        ], 404);
-    }
-
-    $token = $user->createToken('my-app-token')->plainTextToken;
-
-    $response = [
-        'user' => $user,
-        'token' => $token
-    ];
-
-    return response($response, 201);
-});
+Route::post('auth/login', 'AuthController@login');
+Route::post('auth/signup', 'AuthController@signup');
+Route::post('auth/logout', 'AuthController@logout');
