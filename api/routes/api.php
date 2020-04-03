@@ -15,11 +15,15 @@ use App\Http\Controllers;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
-Route::resources(['posts' => PostController::class]);
+Route::middleware('auth:sanctum')->get('user', 'AuthController@getAuthenticatedUser');
+
+Route::group(['middleware' => ['auth:sanctum']], function() {
+    Route::resources(['posts' => PostController::class]);
+});
 
 Route::post('auth/login', 'AuthController@login');
 Route::post('auth/signup', 'AuthController@signup');

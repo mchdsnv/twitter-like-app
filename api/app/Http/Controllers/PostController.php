@@ -37,7 +37,7 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        return $request->user()->posts()->create($request->post())->loadMissing('author:id,name');
+        return $request->user()->posts()->create($request->post())->loadMissing('author:id');
     }
 
     /**

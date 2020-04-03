@@ -11,6 +11,12 @@ class AuthController extends Controller
 {
     public function signup(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
         if (!User::where('email', $request->email)->exists()) {
             $user = User::create([
                 'name'     => $request->name,
