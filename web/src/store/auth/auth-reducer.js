@@ -23,14 +23,6 @@ const reducer = (state = initialState, action) => {
 
         case success(USER_LOGIN):
         case success(USER_SIGNUP):
-            return {
-                ...state,
-                isPending: false,
-                isAuthenticated: true,
-                user: action.payload.data,
-                errors: [],
-            };
-
         case success(FETCH_USER):
             return {
                 ...state,

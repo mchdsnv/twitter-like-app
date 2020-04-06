@@ -44,7 +44,7 @@ class AuthController extends Controller
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response([
-                'message' => ['Unauthorized']
+                'message' => ['Unauthorized. Please check the correctness of your credentials.']
             ], 401);
         }
 
@@ -53,10 +53,9 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         auth()->logout();
-
         return response()->json(['message' => 'Successfully logged out'], 201);
     }
 

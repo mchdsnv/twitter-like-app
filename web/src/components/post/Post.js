@@ -69,7 +69,7 @@ const Post = ({post, deletePost}) => {
                     />
                     <FullName>{post.author.name}</FullName>
                     <UserName>@{post.author.name}</UserName>
-                    <Date>{moment( post.created_at, 'yyyy-mm-dd h:mm:ss').fromNow()}</Date>
+                    <Date>{moment(post.updated_at).fromNow()}</Date>
                     <ButtonGroup>
                         <Button
                             onClick={showEditForm}
