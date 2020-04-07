@@ -19,12 +19,12 @@ use App\Http\Controllers;
 //    return $request->user();
 //});
 
-Route::middleware('auth:sanctum')->get('user', 'AuthController@getAuthenticatedUser');
-
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::resources(['posts' => PostController::class]);
+    Route::get('user', 'AuthController@getAuthenticatedUser');
+    Route::post('auth/logout', 'AuthController@logout');
 });
 
 Route::post('auth/login', 'AuthController@login');
 Route::post('auth/signup', 'AuthController@signup');
-Route::post('auth/logout', 'AuthController@logout');
+//Route::post('auth/logout', 'AuthController@logout');

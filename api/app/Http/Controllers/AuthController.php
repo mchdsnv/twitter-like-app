@@ -55,7 +55,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        auth()->logout();
+        $request->user()->tokens()->where('tokenable_id', $request->user()->id)->delete();
         return response()->json(['message' => 'Successfully logged out'], 201);
     }
 
@@ -64,7 +64,6 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type'   => 'bearer',
-//            'expires_in'  => auth('api')->factory()->getTTL() * 60
         ], 201 );
     }
 
