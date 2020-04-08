@@ -9,7 +9,7 @@
 
 ## About Project
 
-Please use the following command:
+Please use the following commands:
 
 ```
 git clone git@github.com:mchdsnv/twitter-like-app.git
