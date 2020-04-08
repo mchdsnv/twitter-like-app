@@ -9,6 +9,16 @@
 		{
 			"name": "/api/posts",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8OYGPrG4jHbqEXKLDSLJqiMfw50QutxDEiCUJB5JPj6ijqZMQdkpXIQSrrpPoggO9vko7IUvQ3Kzflah",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -34,6 +44,16 @@
 		{
 			"name": "/api/posts/",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8OYGPrG4jHbqEXKLDSLJqiMfw50QutxDEiCUJB5JPj6ijqZMQdkpXIQSrrpPoggO9vko7IUvQ3Kzflah",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -45,7 +65,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"content\": \"Dolorem sit appp[p[op[pmett\" }"
+					"raw": "{\"content\": \"Mauris facilisis id neque vitae suscipit. Donec imperdiet non ligula sit amet malesuada. Fusce iaculis sapien sed neque facilisis luctus\" }"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/posts",
@@ -68,6 +88,16 @@
 		{
 			"name": "/api/posts/{id}",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8OYGPrG4jHbqEXKLDSLJqiMfw50QutxDEiCUJB5JPj6ijqZMQdkpXIQSrrpPoggO9vko7IUvQ3Kzflah",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -92,6 +122,16 @@
 		{
 			"name": "/api/posts/{id}",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8OYGPrG4jHbqEXKLDSLJqiMfw50QutxDEiCUJB5JPj6ijqZMQdkpXIQSrrpPoggO9vko7IUvQ3Kzflah",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
@@ -117,6 +157,16 @@
 		{
 			"name": "/api/posts/{id}",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8OYGPrG4jHbqEXKLDSLJqiMfw50QutxDEiCUJB5JPj6ijqZMQdkpXIQSrrpPoggO9vko7IUvQ3Kzflah",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [
 					{
@@ -128,7 +178,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"content\": \"Dolorem sit appp[p[op[pmett\" }"
+					"raw": "{\"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu ullamcorper libero. Curabitur iaculis sapien vitae nulla facilisis rhoncus. In sit amet nisi urna. Mauris facilisis id neque vitae suscipit.\" }"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/posts/1",
@@ -163,7 +213,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"developer\",\n\t\"email\": \"example@gmail.com\",\n\t\"password\": \"123456789\"\n}"
+					"raw": "{\n\t\"name\": \"developer\",\n\t\"email\": \"exampyle@gmail.com\",\n\t\"password\": \"123\"\n}"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/auth/signup",
@@ -187,6 +237,16 @@
 		{
 			"name": "api/logout",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "YELJG4UhZDmsxQfbG5IAmmH4nBifwXIFpaEpQZKDNAaFq32yPoCHDqKTF1DnHGZJ6ykTij7ILEWndIja",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -198,7 +258,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9zaWdudXAiLCJpYXQiOjE1NzUyODU2MzIsImV4cCI6MTU3NTI4OTIzMiwibmJmIjoxNTc1Mjg1NjMyLCJqdGkiOiIyVjRlMkc3QVdKYXhYb2k4Iiwic3ViIjozLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.eqrF7oHHWyF0-tfoSTWMEl-q38nnF_Ar93IAPD2ktEc\"\n}"
+					"raw": ""
 				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/auth/logout",
@@ -222,9 +282,6 @@
 		{
 			"name": "api/login",
 			"request": {
-				"auth": {
-					"type": "bearer"
-				},
 				"method": "POST",
 				"header": [
 					{
@@ -260,10 +317,32 @@
 		{
 			"name": "/api/user",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "UuRvYGGJyfIpEZJEfjsqpdiJoDbvN07W2C6TQSwJwBV7LTzb7gOVfx5JltwUhLCqlF7gHRjc8N4wbur4",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://127.0.0.1:8000/api/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user"
+					]
 				}
 			},
 			"response": []

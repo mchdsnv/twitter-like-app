@@ -24,7 +24,6 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
 
-            auth()->login($user);
             $token = $user->createToken('twitter-app-token')->plainTextToken;
 
             return $this->respondWithToken($token);
