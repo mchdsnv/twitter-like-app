@@ -1,4 +1,4 @@
-import {success} from 'redux-saga-requests';
+import {success, error} from 'redux-saga-requests';
 
 import {
     USER_LOGIN,
@@ -6,7 +6,8 @@ import {
     USER_LOGOUT,
     APP_INIT,
 } from '../auth/auth-constants';
-import {fetchUser, setAuthHeader} from "../auth/auth-actions";
+import {fetchUser, setAuthHeader} from '../auth/auth-actions';
+import {setNotification} from '../notif/notif-actions';
 
 export default store => next => async action => {
     switch (action.type) {
@@ -28,6 +29,11 @@ export default store => next => async action => {
             localStorage.setItem('user', JSON.stringify({access_token: accessToken}));
             next(setAuthHeader(accessToken));
             await next(fetchUser());
+            break;
+
+        case error(USER_LOGIN):
+        case error(USER_SIGNUP):
+            await next(setNotification(action.payload.response));
             break;
 
         case USER_LOGOUT:

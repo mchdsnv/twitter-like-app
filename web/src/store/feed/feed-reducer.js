@@ -1,6 +1,5 @@
 import { success, error } from 'redux-saga-requests';
 import {CREATE_POST, UPDATE_POST, DELETE_POST, FETCH_POSTS} from './feed-constants';
-import {APP_INIT} from "../auth/auth-constants";
 
 const initialState = {
     isPending: false,

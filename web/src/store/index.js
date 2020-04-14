@@ -6,6 +6,7 @@ import {requestsPromiseMiddleware} from 'redux-saga-requests';
 
 import authReducer from './auth/auth-reducer';
 import feedReducer from './feed/feed-reducer';
+import notifReducer from './notif/notif-reducer';
 
 import axiosMiddleware from './middlewares/axios-middleware';
 import authMiddleware from './middlewares/auth-middleware';
@@ -19,6 +20,7 @@ export default createStore(
     combineReducers({
         auth: authReducer,
         feed : feedReducer,
+        notif: notifReducer,
     }),
     composeEnhancers(
         applyMiddleware(
