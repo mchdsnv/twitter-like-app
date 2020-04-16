@@ -11,10 +11,9 @@ import {connect} from "react-redux";
 import {Route, Switch} from 'react-router-dom';
 
 const Navigation = (props) => {
-    const {notifications} = props.notifications;
     return (
         <>
-            <Notification notifications={notifications}/>
+            <Notification/>
             <Switch>
                 <PrivateRoute path="/feed" component={Feed} />
                 <Route exact path="/" component={Home} />
@@ -28,4 +27,5 @@ const Navigation = (props) => {
     );
 };
 
-export default connect(()=>(state)=>({notifications: state.notif}))(Navigation);
+// export default connect(()=>(state)=>({notifications: state.notif}))(Navigation);
+export default Navigation;

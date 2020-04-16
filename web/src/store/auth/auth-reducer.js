@@ -3,7 +3,6 @@ import {USER_LOGIN, USER_LOGOUT, USER_SIGNUP, FETCH_USER, APP_INIT} from './auth
 
 const initialState = {
     user: null,
-    errors: [],
     isPending: false,
     isAuthenticated: false,
 };
@@ -18,7 +17,6 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isPending: true,
                 isAuthenticated: false,
-                errors: [],
             };
 
         case success(USER_LOGIN):
@@ -29,7 +27,6 @@ const reducer = (state = initialState, action) => {
                 isPending: false,
                 isAuthenticated: true,
                 user: action.payload.data,
-                errors: [],
             };
 
         case success(USER_LOGOUT):
@@ -46,7 +43,6 @@ const reducer = (state = initialState, action) => {
                 user: null,
                 isPending: false,
                 isAuthenticated: false,
-                errors: action.error,
             };
 
         default:

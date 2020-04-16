@@ -1,11 +1,5 @@
 import {success, error} from 'redux-saga-requests';
-
-import {
-    USER_LOGIN,
-    USER_SIGNUP,
-    USER_LOGOUT,
-    APP_INIT,
-} from '../auth/auth-constants';
+import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, APP_INIT, FETCH_USER} from '../auth/auth-constants';
 import {fetchUser, setAuthHeader} from '../auth/auth-actions';
 import {setNotification} from '../notif/notif-actions';
 
@@ -31,6 +25,8 @@ export default store => next => async action => {
             await next(fetchUser());
             break;
 
+        case error(FETCH_USER):
+        case error(USER_LOGOUT):
         case error(USER_LOGIN):
         case error(USER_SIGNUP):
             await next(setNotification(action.payload.response));

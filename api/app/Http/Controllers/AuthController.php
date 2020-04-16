@@ -27,7 +27,7 @@ class AuthController extends Controller
 
             return $this->respondWithToken($token);
         } else {
-            return response()->json(['error' => 'User with email  ' . $request->email . ' already exist.'], 401);
+            return response()->json(['message' => 'User with email  ' . $request->email . ' already exist.'], 401);
         }
     }
 
@@ -41,9 +41,7 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return response([
-                'message' => ['Unauthorized. Please check the correctness of your credentials.']
-            ], 401);
+            return response()->json(['message' => 'Unauthorized. Please check the correctness of your credentials.'], 401);
         }
 
         $token = $user->createToken('twitter-app-token')->plainTextToken;
@@ -69,7 +67,7 @@ class AuthController extends Controller
     {
         $user = $request->user();
         if (!$user ) {
-            return response()->json(['error' => 'User not found'], 401);
+            return response()->json(['message' => 'User not found'], 401);
         }
         return response()->json($user, 200);
     }

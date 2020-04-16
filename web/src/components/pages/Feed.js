@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {Pagination} from 'antd';
 import AddPostForm from '../post/AddPostForm';
 import styled from "styled-components";
+import {Icon} from 'antd';
 
 const FeedPagination = styled(Pagination)`
         margin: 15px auto;
@@ -24,22 +25,26 @@ class Feed extends React.Component {
 
     render () {
         const {posts} = this.props;
+        const {isPending} = this.props;
         return (
             <>
-                <AddPostForm />
-                <Posts />
-                <FeedPagination
-                    defaultCurrent={1}
-                    defaultPageSize={5}
-                    current={posts.current_page}
-                    pageSize={posts.per_page}
-                    total={posts.total}
-                    onChange={(page)=>this.handleChange(page)}
-                    hideOnSinglePage={true}
-                />
+                { isPending ? <Icon type="loading" style={{fontSize: '45px'}}/>: <>
+                    <AddPostForm />
+                    <Posts />
+                    <FeedPagination
+                        defaultCurrent={1}
+                        defaultPageSize={5}
+                        current={posts.current_page}
+                        pageSize={posts.per_page}
+                        total={posts.total}
+                        onChange={(page)=>this.handleChange(page)}
+                        hideOnSinglePage={true}
+                    />
+                    </> }
+
             </>
         );
     }
 }
 
-export default connect(()=>(state)=>({posts: state.feed}), feedActions)(Feed);
+export default connect(()=>(state)=>({posts: state.feed, isPending: state.auth.isPending}), feedActions)(Feed);
