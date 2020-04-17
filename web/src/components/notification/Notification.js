@@ -1,14 +1,14 @@
 import React from 'react';
 import {notification} from 'antd';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 
 class Notification extends React.Component {
     componentDidUpdate() {
         const {notifications} = this.props;
-        notifications.map((message) => {
+        notifications.map((warning) => {
             notification.warn({
                 message: 'Error',
-                description: message.data.message,
+                description: warning.data.message,
                 placement: 'topRight'
             });
         });

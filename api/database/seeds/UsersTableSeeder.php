@@ -17,7 +17,8 @@ class UsersTableSeeder extends Seeder
         factory(User::class)->create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
-            'password' => Hash::make('qwe' )
+            'password' => Hash::make('qwe' ),
+            'api_token' => 'ZDZ7KiH9K4YpxbxcqpxASoFSeKFtLUhIb9Qze3HttPZEsdcMawqsCHWlyA1F'
         ])->posts()->saveMany(factory(Post::class, 3)->make());
 
         factory(User::class, 5)->create()

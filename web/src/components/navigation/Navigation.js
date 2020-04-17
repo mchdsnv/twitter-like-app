@@ -7,7 +7,6 @@ import Signup from '../pages/Signup';
 import PrivateRoute from './PrivateRoute';
 import Home from "../pages/Home";
 import Notification from '../notification/Notification';
-import {connect} from "react-redux";
 import {Route, Switch} from 'react-router-dom';
 
 const Navigation = (props) => {
@@ -27,5 +26,4 @@ const Navigation = (props) => {
     );
 };
 
-// export default connect(()=>(state)=>({notifications: state.notif}))(Navigation);
 export default Navigation;
